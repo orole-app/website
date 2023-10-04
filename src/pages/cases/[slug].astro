@@ -1,20 +1,14 @@
 ---
-import i18next, { changeLanguage } from "i18next";
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import { Icon } from "astro-icon";
-import { localizePath } from "astro-i18next";
 import { getArticleReadingTime } from "@utils/cases";
-
-changeLanguage("en");
 
 // Generate a new path for every collection post
 export async function getStaticPaths() {
-	changeLanguage("en");
 	const casesEntries = await getCollection("cases");
-	var localizedcasesEntries = casesEntries.filter((entry) => entry.slug.startsWith(i18next.language));
-	return localizedcasesEntries.map((post) => {
+	return casesEntries.map((post) => {
 		let slug = post.slug;
 		// @ts-ignore
 		slug = slug.substring(3).replaceAll("cases/", "");
@@ -35,7 +29,7 @@ const readTime = getArticleReadingTime(post.body);
 	<Container>
 		<div class="mx-auto prose prose-lg dark:prose-invert mt-14">
 			<a
-				href={localizePath(`/cases/category/${post.data.category?.toLowerCase()}`)}
+				href={`/cases/category/${post.data.category?.toLowerCase()}`}
 				class="text-blue-400 dark:text-stone-400 uppercase tracking-wider text-sm font-medium no-underline">
 				{post.data.category}
 			</a>
@@ -46,7 +40,7 @@ const readTime = getArticleReadingTime(post.body);
 				<div class="w-full md:w-auto flex flex-wrap gap-3">
 					{
 						post.data.tags.map((tag) => (
-							<a href={localizePath(`/cases/tag/${tag?.toLowerCase()}`)} class="text-sm text-gray-500 dark:text-stone-300">
+							<a href={`/cases/tag/${tag?.toLowerCase()}`} class="text-sm text-gray-500 dark:text-stone-300">
 								#{tag}
 							</a>
 						))
@@ -72,7 +66,7 @@ const readTime = getArticleReadingTime(post.body);
 			<Content />
 		</div>
 		<div class="mx-auto mt-20">
-			<a href={localizePath("/cases")}>
+			<a href="/cases">
 				<div class="flex flex-row align-middle justify-center dark:text-stone-200">
 					<Icon name="tabler:chevron-left" class="w-6 h-6" />
 					<p class="ml-2">Back to cases</p>

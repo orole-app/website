@@ -1,6 +1,5 @@
 ---
 import Link from "@components/ui/link.astro";
-import { t } from "i18next";
 ---
 
 <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-12 lg:px-8">
@@ -13,8 +12,11 @@ import { t } from "i18next";
 				We are here to help you build your next big idea and we are just an email away.
 			</p>
 			<div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-				<Link href="/contact">{t("hero.main_button_text")}</Link>
-				<Link href="/cases" style="muted">{t("hero.secondary_button_text")} <span aria-hidden="true">→</span></Link>
+				<Link href="/contact">Contact us</Link>
+				<Link href="/cases" style="muted">
+					Discover more
+					<span aria-hidden="true">→</span>
+				</Link>
 				<a href="#" class="text-sm font-semibold leading-6 text-black dark:text-white"></a>
 			</div>
 		</div>

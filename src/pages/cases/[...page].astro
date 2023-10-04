@@ -1,5 +1,4 @@
 ---
-import i18next, { changeLanguage } from "i18next";
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
@@ -7,33 +6,27 @@ import Posts from "@components/cases/posts.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Pagination from "@components/cases/pagination.astro";
 
-changeLanguage("en");
-
 export async function getStaticPaths({ paginate }) {
-	changeLanguage("en");
 	var posts = await getCollection("cases", ({ data }) => {
 		return !data.draft;
 	});
 	// Preprocess the posts to split the slugs and get the languages
 	var processedPosts = posts.map((post) => {
 		const [...slug] = post.slug.split("/");
-		let lang = i18next.language;
 		var firstSlug = post.slug.match(/^([^\/]*)\//);
-		if (firstSlug) {
-			lang = firstSlug[1];
-		}
+
 		return {
 			...post,
 			slug: slug.join("/"),
-			lang: lang,
+			lang: "en",
 		};
 	});
 	// Filter posts based on the current language
-	const localizedPosts = processedPosts.filter((post) => post.lang === i18next.language);
-	localizedPosts.sort(function (a, b) {
+
+	processedPosts.sort(function (a, b) {
 		return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 	});
-	return paginate(localizedPosts, {
+	return paginate(processedPosts, {
 		params: { cases: "cases" || undefined },
 		pageSize: 4,
 	});
