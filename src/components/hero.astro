@@ -1,10 +1,11 @@
 ---
 import Link from "@components/ui/link.astro";
 import abstractDottedGlobeIllustration from "assets/abstract-dotted-globe-illustration.png";
+import Icon from "astro-icon";
 import { Image } from "astro:assets";
 ---
 
-<div class="relative isolate pt-14 dark:bg-stone-950">
+<div class="relative isolate pt-14 dark:bg-stone-950 max-w-screen-xl mx-auto">
 	<div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
 		<svg
 			class="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem] animate-slide"
@@ -31,10 +32,15 @@ import { Image } from "astro:assets";
 	<div class="sm:pt-10">
 		<div class="mx-auto max-w-7xl">
 			<div class="mx-auto max-w-2xl text-center">
-				<h1 class="text-4xl font-bold tracking-tight text-black dark:text-white sm:text-6xl">Build with ease</h1>
-				<p class="mt-6 text-lg leading-8 text-gray-900 dark:text-gray-100">For small to large scale projects, any language.</p>
+				<h1 class="text-4xl font-bold tracking-tight text-black dark:text-white sm:text-6xl">Build fullstack apps without any hassle.</h1>
+				<p class="mt-6 text-lg leading-8 text-gray-900 dark:text-gray-100">
+					Built for any team size. Our pay-as-you-go pricing model takes your apps to the stars.
+				</p>
 				<div class="mt-10 flex items-center justify-center gap-x-2 md:gap-x-6">
-					<Link href="/">Deploy now</Link>
+					<Link href="/" class="flex items-center">
+						Deploy for free
+						<Icon name="tabler:rocket" className="w-4 h-4 ml-2" />
+					</Link>
 
 					<Link href="/cases" style="muted">
 						Learn more
@@ -45,6 +51,7 @@ import { Image } from "astro:assets";
 			<div class="flex justify-center items-center mt-4 md:mt-8">
 				<Image
 					class="inline-block mt-12 md:mt-20"
+					data-aos="fade-up"
 					src={abstractDottedGlobeIllustration}
 					alt="Orole"
 					width={600}
