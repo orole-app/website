@@ -9,17 +9,19 @@ import Faq from "@components/faq.astro";
 
 <Layout title="Pricing">
 	<Container>
-		<Sectionhead>
-			<Fragment slot="title">Pricing</Fragment>
-			<Fragment slot="desc">Pricing for individuals and businesses of all sizes.</Fragment>
-		</Sectionhead>
+		<div class="px-5 mx-auto max-w-7xl">
+			<Sectionhead>
+				<Fragment slot="title">Pricing</Fragment>
+				<Fragment slot="desc">Pricing for individuals and businesses of all sizes.</Fragment>
+			</Sectionhead>
 
-		<div class="gap-10 mt-20">
-			<PricingTable />
-		</div>
-		<!-- <Logos /> -->
-		<div class="mt-20">
-			<Faq />
+			<div class="gap-10 mt-20">
+				<PricingTable />
+			</div>
+			<!-- <Logos /> -->
+			<div class="mt-20">
+				<Faq />
+			</div>
 		</div>
 	</Container>
 </Layout>
